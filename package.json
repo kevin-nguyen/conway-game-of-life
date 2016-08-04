@@ -4,7 +4,8 @@
   "description": "A cellular automaton built using HTML5 canvas and structured with react.js, redux.js, and immutable.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --inline --progress --colors",
+    "production": "webpack -p"
   },
   "repository": {
     "type": "git",
