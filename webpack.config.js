@@ -6,7 +6,7 @@ var htmlWebpackPluginConfig = new htmlWebpackPlugin({
 });
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var ExtractTextPluginConfig = new ExtractTextPlugin('dist/bundle.css', {allChunks: true});
+var ExtractTextPluginConfig = new ExtractTextPlugin('prod/bundle.css', {allChunks: true});
 
 module.exports = {
     entry: [
