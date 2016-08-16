@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import CanvasComponent from './CanvasComponent'
+import CanvasComponentWrapper from '../wrappers/CanvasComponentWrapper'
 
 
 export default class Main extends Component {
   render() {
     return (
       <div>
-        <CanvasComponent >
+        <CanvasComponentWrapper >
           
-        </CanvasComponent>
-        Hello
+        </CanvasComponentWrapper>
       </div>
     );
   }
