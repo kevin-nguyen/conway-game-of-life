@@ -22,7 +22,7 @@ export default class CanvasComponent extends Component {
 
   updateNode(node, ctx) {
     if (node.alive) {
-      ctx.fillStyle = "teal";
+      ctx.fillStyle = "#0FF";
       ctx.fillRect(node.xPos, node.yPos, node.width, node.width);
     }
   }
@@ -51,27 +51,34 @@ export default class CanvasComponent extends Component {
   }
 
   componentWillMount() {
-    this.gameEnvironment = new World(10, this.props.canvasWidth, this.props.canvasWidth);
-    this.gameEnvironment.init();
-    console.log(this.gameEnvironment);
+    this.setState({
+      width: this.props.canvasWidth, 
+      height: this.props.canvasHeight
+    });
+    
   }
 
   componentDidMount() {
+    this.gameEnvironment = new World(15, this.state.width, this.state.height);
+    this.gameEnvironment.init();
+    console.log(this.gameEnvironment);
     requestAnimationFrame(this.updateCanvas);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.width !== this.props.width || nextProps.height !== this.props.height) {
-      this.props.gameEnvironment.rescale(nextProps.width, nextProps.height);
+    if (nextProps.canvasWidth !== this.props.canvasWidth || nextProps.canvasHeight !== this.props.canvasHeight) {
+      this.setState({width: nextProps.canvasWidth, 
+                     height: nextProps.canvsHeight});
+      this.gameEnvironment.rescale(nextProps.canvsWidth, nextProps.canvsHeight);
     }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return (nextProps.width !== this.props.width || nextProps.height !== this.props.height);
+    return (nextProps.canvasWidth !== this.props.canvasWidth || nextProps.canvasHeight !== this.props.canvasHeight);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    requestAnimationFrame(this.updateCanvas);
+    //requestAnimationFrame(this.updateCanvas);
     //this.props.gameEnvironment.update();
   }
 
